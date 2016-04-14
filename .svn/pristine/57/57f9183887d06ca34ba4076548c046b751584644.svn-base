@@ -1,0 +1,26 @@
+----------------------------------------LUA ERROR: [string "../src//main.lua"]:53: attempt to call global 'createLayerFarm' (a nil value)
+stack traceback:
+	[string "../src//main.lua"]:19: in function 'createLayerFarm'
+	[string "../src//main.lua"]:53: in function <[string "../src//main.lua"]:43>
+	[C]: in function 'xpcall'
+	[string "../src//main.lua"]:60: in main chunk
+	[C]: in function 'require'
+	[string "require 'main.lua'"]:1: in main chunk--------------------------------------------------------------------------------LUA ERROR: [string "../src//main.lua"]:53: attempt to call global 'createLayerFarm' (a nil value)
+stack traceback:
+	[string "../src//main.lua"]:19: in function 'createLayerFarm'
+	[string "../src//main.lua"]:53: in function <[string "../src//main.lua"]:43>
+	[C]: in function 'xpcall'
+	[string "../src//main.lua"]:60: in main chunk
+	[C]: in function 'require'
+	[string "require 'main.lua'"]:1: in main chunk----------------------------------------#####################start:1445706462#####################start:1445706477#####################start:1445706510
+#####################start:1445706512
+#####################start:1445706555
+----------------------------------------LUA ERROR: [string "../src//main.lua"]:56: invalid arguments in function 'lua_cocos2dx_Director_setScheduler'
+stack traceback:
+	[string "../src//main.lua"]:19: in function <[string "../src//main.lua"]:16>
+	[C]: in function 'setScheduler'
+	[string "../src//main.lua"]:56: in function <[string "../src//main.lua"]:43>
+	[C]: in function 'xpcall'
+	[string "../src//main.lua"]:59: in main chunk
+	[C]: in function 'require'
+	[string "require 'main.lua'"]:1: in main chunk----------------------------------------

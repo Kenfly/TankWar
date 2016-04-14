@@ -1,0 +1,77 @@
+cc.FileUtils:getInstance():addSearchPath("../src")
+cc.FileUtils:getInstance():addSearchPath("../res")
+
+-- CC_USE_DEPRECATED_API = true
+function require_ex(_mname)
+    package.loaded[_mname] =nil
+    require(_mname)
+end
+
+if not g_init_path then
+    package.path = package.path..";".."luakit/?.lua"
+    g_init_path = true
+end
+
+require_ex("cocos.init")
+require_ex("class")
+require_ex("config")
+
+-- cclog
+cclog = function(...)
+    print(string.format(...))
+    file = io.open("log.txt", "a+")
+    file:write(string.format(...))
+    file:close()
+end
+
+-- for CCLuaEngine traceback
+function __G__TRACKBACK__(msg)
+    cclog("----------------------------------------")
+    cclog("LUA ERROR: " .. tostring(msg) .. "\n")
+    cclog(debug.traceback())
+    cclog("----------------------------------------")
+end
+
+
+local function initGLView()
+    local director = cc.Director:getInstance()
+    local glView = director:getOpenGLView()
+    if nil == glView then
+        glView = cc.GLViewImpl:create("TankWar")
+        director:setOpenGLView(glView)
+    end
+
+    director:setOpenGLView(glView)
+
+    glView:setDesignResolutionSize(global_config.designe_width, global_config.designe_height, cc.ResolutionPolicy.NO_BORDER)
+    glView:setFrameSize(global_config.window_width, global_config.window_height)
+
+    --turn on display FPS
+    director:setDisplayStats(true)
+
+    --set FPS. the default value is 1.0/60 if you don't call this
+    director:setAnimationInterval(1.0 / 60)
+end
+
+class("m_object")
+
+local function main()
+    cclog("#####################start:" .. os.time() .. "\n")
+    -- avoid memory leak
+    collectgarbage("setpause", 100)
+    collectgarbage("setstepmul", 5000)
+
+    initGLView()
+    ---------------
+
+    -- run
+    local sceneGame = cc.Scene:create()
+    cc.Director:getInstance():runWithScene(sceneGame)
+
+    obj = m_object.new()
+    print("obj class name: ", obj.cname_)
+    --cc.Director:getInstance():setScheduler(function() return 1 end)
+end
+
+xpcall(main, __G__TRACKBACK__)
+

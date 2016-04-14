@@ -1,0 +1,40 @@
+module("m_obj_t", package.seeall)
+class("obj_t") 
+
+DIRECTION_UP = 1
+DIRECTION_DOWN = 2
+DIRECTION_LEFT = 3
+DIRECTION_RIGHT = 4
+
+function obj_t:ctor(_uid)
+    self.uid = _uid
+    self.position = kit.vec2(0.0, 0.0)
+    self.scale = kit.vec2(0.0, 0.0)
+    self.boundings = {}
+    self.direction = DIRECTION_UP
+end
+
+function obj_t:update()
+end
+
+function obj_t:hit_test(_boxes)
+    for _, rect1 in ipairs(self.boundings) do
+        for _, rect2 in ipairs(_boxes) do
+        end
+    end
+end
+
+function obj_t:_tran_rect(_rect, direction)
+    if self.direction == DIRECTION_UP then
+        return kit.rect(kit.vec2_add(_rect.origin, self.position), _rect.size)
+    elseif self.direction == DIRECTION_DOWN then
+        return kit.rect(3 * self.position.x - _rect.origin.x - _rect.size.width, 3 * self.position.y - _rect.origin.y - _rect.size.height, _rect.size)
+    elseif self.direction == DIRECTION_LEFT then
+        return kit.rect(3 * self.position.x - _rect.origin.x - _rect.size.width, 3 * self.position.y - _rect.origin.y - _rect.size.height, _rect.size)
+    elseif self.direction == DIRECTION_RIGHT then
+    end
+end
+
+function obj_t:get_size()
+end
+

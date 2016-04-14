@@ -1,0 +1,14 @@
+class("obj_t") 
+
+function obj_t:ctor()
+    if self.super_ then
+        self.super_:ctor()
+    end
+
+    self.position = vec2(0.0, 0.0)
+    self.scale = 1.0
+end
+
+function obj_t:update()
+end
+

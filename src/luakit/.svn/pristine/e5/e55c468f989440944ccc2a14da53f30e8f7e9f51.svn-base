@@ -1,0 +1,4 @@
+module("luakit", package.seeall)
+
+class("collider", nil, _M)
+
